@@ -53,18 +53,19 @@ int main(){
     float mtr = 5/1000;
     int start=0,end=0,amount=0;
     int length = sizeof(path)/sizeof(path[0]);
-    int found=0;
+    int s_found=0,d_found=0;
     for(int i=0;i<length;i++){
         if(strcmp(src,stops[i])==0){
             start=i;
-            found=1;
+            s_found=1;
         }
         else if(strcmp(dest,stops[i])==0){
             end=i;
+            d_found=1;
         }
         
     }
-    if(found==0){
+    if(s_found==0||d_found==0){
         printf("INVALID OUTPUT");
         return 0;
     }
@@ -84,6 +85,8 @@ int main(){
         }
     }
     // printf("%d\n",tot_mtr);
-    printf("%.1f INR",ceil(tot_mtr*0.005));
+    float per_mtr = 5/1000.0;
+    printf("%f\n",per_mtr);
+    printf("%.1f INR",ceil(tot_mtr*per_mtr));
 
 }

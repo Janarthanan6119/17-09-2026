@@ -8,19 +8,20 @@ int main(){
     string src,dest;
     cin>>src>>dest;
     cout<<src<<dest;
-    int start=0,end=0,found=0;
+    int start=0,end=0,s_found=0,d_found=0;
     int length = sizeof(path)/sizeof(path[0]);
     for(int i=0;i<length;i++){
         if(src==stops[i]){
             start=i;
-            found=1;
+            s_found=1;
         }
         if(dest==stops[i]){
             end=i;
+            d_found=1;
         }
     }
     cout<<"Start:"<<start<<"End:"<<end<<endl;
-    if(found==0){
+    if(s_found==0||d_found==0){
         cout<<"INVALID OUTPUT";
         return 0;
     }
@@ -38,7 +39,9 @@ int main(){
             tot_mtr+=path[i];
         }
     }
-    cout<<tot_mtr<<endl;
+    
+    float per_mtr = 5/1000.0;
+    cout<<per_mtr<<endl;
     cout<<setprecision(1)<<fixed<<ceil(tot_mtr*0.005)<<" INR";
     cout.unsetf(std::ios::fixed);
 }
